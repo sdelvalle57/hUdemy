@@ -1,4 +1,4 @@
-<mxfile host="www.draw.io" modified="2020-02-12T04:31:24.576Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0" etag="Y3guJ14qyh0xNdKQCVV5" version="12.6.7" type="github" pages="8">
+<mxfile host="www.draw.io" modified="2020-02-12T04:58:46.183Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0" etag="M6U8rWX0lhoRV6Uh0BvP" version="12.6.7" type="github" pages="9">
   <diagram id="DXIPTjjtn7do77gQKyFH" name="lib.rs">
     <mxGraphModel dx="1865" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -74,7 +74,7 @@
         </mxCell>
         <mxCell id="T_4qSHEh6NbkcvrsZpWz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-42">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="580" y="400" as="targetPoint"/>
+            <mxPoint x="590" y="400" as="targetPoint"/>
           </mxGeometry>
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-42" value="&lt;div&gt;create_course&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;title: String, timestamp: u64)&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -85,6 +85,11 @@
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-46" value="Text" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">
           <mxGeometry x="75" y="787.5" width="40" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="T9cRb3DSbUy0IrTT3bFP-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-47">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="590" y="480" as="targetPoint"/>
+          </mxGeometry>
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-47" value="&lt;div&gt;delete_course&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;course_address: Address&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="460" width="160" height="40" as="geometry"/>
@@ -104,6 +109,9 @@
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-53" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="490" width="150" height="30" as="geometry"/>
         </mxCell>
+        <mxCell id="QeaxwachH8ITgzLCpMYT-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-60" target="QeaxwachH8ITgzLCpMYT-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-60" value="&lt;div&gt;update_course&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;title: String, &lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;module_address: Vec&amp;lt;Address&amp;gt;, &lt;br&gt;&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;course_address: Address&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="320" y="540" width="190" height="70" as="geometry"/>
         </mxCell>
@@ -112,6 +120,9 @@
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-62" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="600" width="150" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="uHlve_pofajbCsK1crNg-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-66" target="uHlve_pofajbCsK1crNg-1">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-66" value="&lt;div&gt;get_all_courses&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="650" width="160" height="20" as="geometry"/>
@@ -122,6 +133,11 @@
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-68" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="660" width="150" height="30" as="geometry"/>
         </mxCell>
+        <mxCell id="CiQeSqm9GlmW5YNpODYV-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-70">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="720" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-70" value="&lt;div&gt;get_my_courses&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="710" width="160" height="20" as="geometry"/>
         </mxCell>
@@ -130,6 +146,9 @@
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-72" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="720" width="150" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="CiQeSqm9GlmW5YNpODYV-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-73" target="nhXxoEbPucU11t1gjoco-1">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-73" value="get_my_enrolled_courses" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="770" width="160" height="20" as="geometry"/>
@@ -140,6 +159,9 @@
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-75" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="780" width="150" height="30" as="geometry"/>
         </mxCell>
+        <mxCell id="CiQeSqm9GlmW5YNpODYV-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-76" target="I6SvL49ZVfE7JqHlYanj-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-76" value="&lt;div&gt;enrol_in_course&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;course_address: Address&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="830" width="160" height="40" as="geometry"/>
         </mxCell>
@@ -149,6 +171,9 @@
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-78" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="860" width="150" height="30" as="geometry"/>
         </mxCell>
+        <mxCell id="CiQeSqm9GlmW5YNpODYV-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-79" target="CiQeSqm9GlmW5YNpODYV-1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-79" value="&lt;div&gt;get_all_students&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;font color=&quot;#990000&quot;&gt;course_address: Address&lt;/font&gt;&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="340" y="910" width="160" height="40" as="geometry"/>
         </mxCell>
@@ -157,6 +182,9 @@
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-81" value="&lt;font color=&quot;#006600&quot;&gt;ZomeApiResult&amp;lt;Address&amp;gt;&lt;/font&gt;" style="text;html=1;" parent="1" vertex="1">
           <mxGeometry x="390" y="940" width="150" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="L5FAuuHAnY7-9ZCyquhL-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BPKDQX9KvzaL9xmLwDMY-85" target="L5FAuuHAnY7-9ZCyquhL-1">
+          <mxGeometry relative="1" as="geometry"/>
         </mxCell>
         <mxCell id="BPKDQX9KvzaL9xmLwDMY-85" value="&lt;div&gt;get_entry&lt;/div&gt;&lt;div&gt;address: Address&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="365" y="290" width="130" height="40" as="geometry"/>
@@ -188,7 +216,45 @@
         </UserObject>
         <UserObject label="create&lt;br&gt;&lt;font color=&quot;#990000&quot;&gt;title, timestamp&lt;br&gt;&lt;/font&gt;" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="T_4qSHEh6NbkcvrsZpWz-1">
           <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
-            <mxGeometry x="585" y="380" width="160" height="40" as="geometry"/>
+            <mxGeometry x="595" y="380" width="135" height="40" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <mxCell id="L5FAuuHAnY7-9ZCyquhL-1" value="hdk::get_entry(&amp;amp;address)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="585" y="290" width="150" height="40" as="geometry"/>
+        </mxCell>
+        <UserObject label="delete&lt;br&gt;&lt;font color=&quot;#990000&quot;&gt;course_address&lt;br&gt;&lt;/font&gt;" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="T9cRb3DSbUy0IrTT3bFP-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="595" y="460" width="130" height="40" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <UserObject label="update&lt;br&gt;&lt;div align=&quot;left&quot;&gt;&lt;font color=&quot;#990000&quot;&gt;title, modules_addresses, course_address&lt;br&gt;&lt;/font&gt;&lt;/div&gt;" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="QeaxwachH8ITgzLCpMYT-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="570" y="552.5" width="230" height="45" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <UserObject label="list" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="uHlve_pofajbCsK1crNg-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="582.5" y="645" width="127.5" height="30" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <UserObject label="get_my_courses" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="gtlHXqYlqQ0C6MJCiXMT-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="582.5" y="705" width="160" height="30" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <UserObject label="get_my_enrolled_courses" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="nhXxoEbPucU11t1gjoco-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="575" y="765" width="160" height="30" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;div&gt;enrol_in_course&lt;/div&gt;&lt;font color=&quot;#990000&quot;&gt;course_address&lt;br&gt;&lt;/font&gt;" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="I6SvL49ZVfE7JqHlYanj-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="575" y="830" width="160" height="40" as="geometry"/>
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;div&gt;get_all_studen&lt;font color=&quot;#990000&quot;&gt;ts&lt;/font&gt;&lt;/div&gt;&lt;font color=&quot;#990000&quot;&gt;course_address&lt;br&gt;&lt;/font&gt;" link="data:page/id,MCmtantAbpTTfe5g0qaD" id="CiQeSqm9GlmW5YNpODYV-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#33FF33;" vertex="1" parent="1">
+            <mxGeometry x="575" y="910" width="160" height="40" as="geometry"/>
           </mxCell>
         </UserObject>
       </root>
@@ -1029,6 +1095,23 @@
         </mxCell>
         <mxCell id="E1JReL9Yz7iogGJigBfb-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="E1JReL9Yz7iogGJigBfb-11" source="E1JReL9Yz7iogGJigBfb-13" target="E1JReL9Yz7iogGJigBfb-14">
           <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="vf7MB381yTsMU9Ambgtz" name="content: Content">
+    <mxGraphModel dx="1038" dy="553" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="qfZIwbFr-Lw-V_LxisdH-0"/>
+        <mxCell id="qfZIwbFr-Lw-V_LxisdH-1" parent="qfZIwbFr-Lw-V_LxisdH-0"/>
+        <mxCell id="qfZIwbFr-Lw-V_LxisdH-2" value="&lt;div align=&quot;left&quot;&gt;use crate::course;&lt;br&gt;use crate::course::Course;&lt;br&gt;use crate::module::Module;&lt;br&gt;use hdk::holochain_core_types::dna::entry_types::Sharing;&lt;br&gt;use hdk::holochain_core_types::{entry::Entry, validation::EntryValidationData};&lt;br&gt;use hdk::holochain_json_api::{error::JsonError, json::JsonString};&lt;br&gt;use hdk::holochain_persistence_api::cas::content::Address;&lt;br&gt;use hdk::prelude::LinkMatch;&lt;br&gt;use hdk::{&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; entry_definition::ValidatingEntryType,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; error::{ZomeApiError, ZomeApiResult},&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; AGENT_ADDRESS,&lt;br&gt;};&lt;br&gt;use holochain_wasm_utils::api_serialization::{&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; get_entry::{GetEntryOptions, GetEntryResult},&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; get_links::GetLinksOptions,&lt;br&gt;};&lt;br&gt;use std::convert::TryFrom;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qfZIwbFr-Lw-V_LxisdH-1">
+          <mxGeometry width="410" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="3U1lQpBLiDmBE-jKHS99-1" value="&lt;div align=&quot;left&quot;&gt;&lt;b&gt;pub struct Content{&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; name: String,&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; url: String,&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; description: String&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; timestamp: u64,&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;b&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp; module_address: Address&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;&lt;b&gt;}&lt;/b&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="qfZIwbFr-Lw-V_LxisdH-1">
+          <mxGeometry x="360" y="200" width="420" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="3U1lQpBLiDmBE-jKHS99-2" value="#[derive(Serialize, Deserialize, Debug, self::DefaultJson, Clone)]" style="text;html=1;" vertex="1" parent="qfZIwbFr-Lw-V_LxisdH-1">
+          <mxGeometry x="350" y="180" width="360" height="30" as="geometry"/>
         </mxCell>
       </root>
     </mxGraphModel>
