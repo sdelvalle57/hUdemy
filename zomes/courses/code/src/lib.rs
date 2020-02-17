@@ -62,6 +62,11 @@ mod my_zome {
     }
 
     #[zome_fn("hc_public")]
+    fn get_entry(address: Address) -> ZomeApiResult<Option<Entry>> {
+        hdk::get_entry(&address)
+    }
+
+    #[zome_fn("hc_public")]
     fn create_course(title: String, timestamp: u64) -> ZomeApiResult<Address> {
         course::create(title, timestamp)
     }
@@ -97,14 +102,31 @@ mod my_zome {
     }
 
     #[zome_fn("hc_public")]
-    fn get_all_students(course_address: Address) -> ZomeApiResult<Vec<Address>> {
-        course::get_all_students(course_address)
+    fn get_students(course_address: Address) -> ZomeApiResult<Vec<Address>> {
+        course::get_students(course_address)
+    }
+
+    
+
+
+    /***** Modules entry definition and functions */
+    #[entry_def]
+    fn module_entry_definition() -> ValidatingEntryType {
+        module::entry_def()
     }
 
     #[zome_fn("hc_public")]
-    fn get_entry(address: Address) -> ZomeApiResult<Option<Entry>> {
-        hdk::get_entry(&address)
+    fn create_module(title: String, course_address: Address, timestamp: u64) -> ZomeApiResult<Address> {
+        module::create(title, &course_address, timestamp)
     }
 
+    #[zome_fn("hc_public")]
+    fn update_module(title: String, module_address: Address) -> ZomeApiResult<Address> {
+        module::update(title, &module_address)
+    }
 
+    #[zome_fn("hc_public")]
+    fn delete_module(module_address: Address) -> ZomeApiResult<Address> {
+        module::delete(module_address)
+    }
 }

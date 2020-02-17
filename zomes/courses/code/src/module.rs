@@ -35,6 +35,15 @@ fn validate_module_title(title: &str) -> Result<(), String> {
     }
 }
 
+fn validate_author(signing_addresses: &Vec<Address>, module: &Module) -> ZomeApiResult<()> {
+    let course: Course = hdk::utils::get_as_type(module.course_address.to_string().into())?;
+    hdk::debug(format!("{:?}", course))?;
+    if !signing_addresses.contains(&course.teacher_address) {
+        return Err(ZomeApiError::from(String::from("Only the teacher can modify a module for it")));
+    }
+    Ok(())
+}
+
 pub fn entry_def() -> ValidatingEntryType {
     entry!(
         name: "module",
@@ -43,21 +52,71 @@ pub fn entry_def() -> ValidatingEntryType {
         validation_package: || {
             hdk::ValidationPackageDefinition::Entry
         },
-        validation: | _validation_data: hdk::EntryValidationData<Module>| {
-          Ok(())
+        validation: | validation_data : hdk::EntryValidationData<Module>| {
+            match validation_data {
+                EntryValidationData::Create {entry, validation_data } => {
+                    validate_module_title(&entry.title)?;
+                    validate_author(&validation_data.sources(), &entry)?;
+                    Ok(())
+                },
+                EntryValidationData::Modify {new_entry, old_entry, validation_data, ..} => {
+                    validate_module_title(&new_entry.title)?;
+
+                    if new_entry.course_address != old_entry.course_address {
+                        return Err(String::from("Cannot modify the course of a module"));
+                    }
+                    validate_author(&validation_data.sources(), &new_entry)?;
+                    Ok(())
+                },
+                EntryValidationData::Delete {old_entry, validation_data, ..} => {
+                    validate_author(&validation_data.sources(), &old_entry)?;
+                    Ok(())
+                }
+            }
         },
-        links:[
+        links: [
             to!(
                 "content",
                 link_type: "module->contents",
-                validation_package:||{
+                validation_package:|| {
                     hdk::ValidationPackageDefinition::Entry
                 },
-                validation:|_validation_data: hdk::LinkValidationData|{
-                     // TODO: finish validation on Create/Update/Delete.  Only the owner of course, can create/delete/update module of course.
+                validation:|_validation_data: hdk::LinkValidationData| {
                     Ok(())
                 }
             )
         ]
     )
+}
+
+pub fn create(title: String, course_address: &Address, timestamp: u64) -> ZomeApiResult<Address> {
+    let mut course: Course = hdk::utils::get_as_type(course_address.to_string().into())?;
+
+    let new_module: Module = Module::new(title, course_address.to_string().into(), timestamp);
+    let new_module_address = hdk::commit_entry(&new_module.entry())?;
+
+    course.modules.push(new_module_address.clone());
+    course.timestamp += 1;
+    hdk::update_entry(course.entry(), &course_address)?;
+
+    Ok(new_module_address)
+}
+
+pub fn update(title: String, module_address: &Address) -> ZomeApiResult<Address> {
+    let mut module: Module = hdk::utils::get_as_type(module_address.to_string().into())?;
+    module.title = title;
+    hdk::update_entry(module.entry(), module_address)
+}
+
+pub fn delete(module_address: Address) -> ZomeApiResult<Address> {
+    let module: Module = hdk::utils::get_as_type(module_address.clone())?;
+    let mut course: Course = hdk::utils::get_as_type(module.course_address.clone())?;
+
+    let result = hdk::remove_entry(&module_address)?;
+
+    course.modules.remove_item(&module_address)?;
+    course.timestamp += 1;
+    hdk::update_entry(course.entry(), &module.course_address)?;
+
+    Ok(result)
 }
