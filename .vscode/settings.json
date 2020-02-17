@@ -1,0 +1,4 @@
+{
+    "nixEnvSelector.nixShellConfig": "${workspaceRoot}/default.nix",
+    "rust.all_features": true
+}
