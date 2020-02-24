@@ -1,0 +1,63 @@
+bridges = []
+persistence_dir = ''
+ui_bundles = []
+ui_interfaces = []
+
+[[agents]]
+id = 'hc-alice'
+keystore_file = './alice.keystore'
+name = 'alice'
+public_address = 'HcScjwa89epCAea9r8tUIRrj35ixri378CehkGxW98Nu5c3xvn87NvUbovxpxei'
+
+[[agents]]
+id = 'hc-bob'
+keystore_file = './bob.keystore'
+name = 'bob'
+public_address = 'HcScIWQx7b9vA6qcmeGt6cUu3gSnfiph4gvgSGDDwotfnpmom9ordxV9HX8rfoa'
+
+[[dnas]]
+file = '/home/holomachine/projects/hUdemy/dna/dist/dna.dna.json'
+hash = 'QmeesvpXAv9wKgDCqw93G5uQh1nxc1T6ujrw7fZftKa7JD'
+id = 'hc-courses'
+
+[[instances]]
+agent = 'hc-alice'
+dna = 'hc-courses'
+id = 'alice-instance'
+
+[instances.storage]
+type = 'memory'
+
+[[interfaces]]
+admin = true
+id = 'alice-interface'
+
+[[interfaces.instances]]
+id = 'alice-instance'
+
+[interfaces.driver]
+port = 8888
+type = 'websocket'
+
+[[instances]]
+agent = 'hc-bob'
+dna = 'hc-courses'
+id = 'bob-instance'
+
+[instances.storage]
+type = 'memory'
+
+[[interfaces]]
+admin = true
+id = 'bob-interface'
+
+[[interfaces.instances]]
+id = 'bob-instance'
+
+[interfaces.driver]
+port = 8889
+type = 'websocket'
+
+[network]
+type = "sim2h"
+sim2h_url = 'ws://localhost:9000'

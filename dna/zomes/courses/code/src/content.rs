@@ -44,15 +44,8 @@ impl Content {
     }
 }
 
-fn validate_author(signing_addresses: &Vec<Address>, module_address: &Address) -> ZomeApiResult<()> {
-    let module: Module = hdk::utils::get_as_type(module_address.clone())?;
-    let course: Course = hdk::utils::get_as_type(module.course_address.clone())?;
-    if !signing_addresses.contains(&course.teacher_address) {
-        return Err(ZomeApiError::from(String::from("Error: Only the teacher can create or modify a content for module")));
-    }
-    Ok(())
-}
 
+////////////////////Course Entry Definition
 pub fn entry_def() -> ValidatingEntryType {
     entry!(
         name: "content",
@@ -83,6 +76,17 @@ pub fn entry_def() -> ValidatingEntryType {
     )
 }
 
+/////////////////////////// Validations
+fn validate_author(signing_addresses: &Vec<Address>, module_address: &Address) -> ZomeApiResult<()> {
+    let module: Module = hdk::utils::get_as_type(module_address.clone())?;
+    let course: Course = hdk::utils::get_as_type(module.course_address.clone())?;
+    if !signing_addresses.contains(&course.teacher_address) {
+        return Err(ZomeApiError::from(String::from("Error: Only the teacher can create or modify a content for module")));
+    }
+    Ok(())
+}
+
+/// Helper Functions
 pub fn create(name: String, module_address: Address, url: String, timestamp: u64, description: String) -> ZomeApiResult<Address> {
     let new_content = Content::new(name, module_address.clone(), url, timestamp, description);
     let new_content_entry = new_content.entry();
