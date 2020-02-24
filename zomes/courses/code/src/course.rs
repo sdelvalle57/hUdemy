@@ -4,9 +4,9 @@ use hdk::AGENT_ADDRESS;
 #[derive(Serialize, Deserialize, Debug, self::DefaultJson, Clone)]
 pub struct Course {
     title: String,
-    teacher_address: Address,
-    modules: Vec<Address>, // Implicit link, as relationship with module
-    timestamp: u64,
+    pub teacher_address: Address,
+    pub modules: Vec<Address>, // Implicit link, as relationship with module
+    pub timestamp: u64,
 }
 
 impl Course {

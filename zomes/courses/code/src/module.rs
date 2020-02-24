@@ -114,7 +114,7 @@ pub fn delete(module_address: Address) -> ZomeApiResult<Address> {
 
     let result = hdk::remove_entry(&module_address)?;
 
-    course.modules.remove_item(&module_address)?;
+    course.modules.remove_item(&module_address);
     course.timestamp += 1;
     hdk::update_entry(course.entry(), &module.course_address)?;
 

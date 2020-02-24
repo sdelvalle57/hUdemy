@@ -57,6 +57,36 @@ const create_course = async (user, title, timestamp) => {
   return course_addr;
 }
 
+const create_module = async (user, title, course_address, timestamp) => {
+  const module_addr = await user.call(
+    "course_dna",
+    "courses",
+    "create_module",
+    {
+      title,
+      course_address,
+      timestamp
+    }
+  );
+  return module_addr;
+}
+
+const create_content = async (user, name, module_address, url, timestamp, description) => {
+  const content_addr = await user.call(
+    "course_dna",
+    "courses", 
+    "create_content", 
+    {
+      name,
+      module_address,
+      url,
+      timestamp,
+      description
+    }
+  );
+  return content_addr;
+}
+
 orchestrator.registerScenario("Scenario1: Create new course", async (s, t) => {
   const { alice, bob } = await s.players(
     {alice: conductorConfig, bob: conductorConfig},
@@ -193,6 +223,247 @@ orchestrator.registerScenario("Scenario6: Update course", async (s, t) => {
     modules: []
   })
   await s.consistency();
+
+})
+
+orchestrator.registerScenario("Scbenatrio7: Create Module", async (s, t) => {
+  const { alice, bob } = await s.players(
+    {alice: conductorConfig, bob: conductorConfig},
+    true
+  );
+  
+  const course_addr = await create_course(alice, "my course", 123);
+  t.ok(course_addr.Ok);
+  await s.consistency();
+
+  const module_addr = await create_module(alice, "my module", course_addr.Ok, 123);
+  t.ok(module_addr.Ok);
+  await s.consistency();
+
+  const moduleResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: module_addr.Ok
+  })
+  const courseModule = JSON.parse(moduleResult.Ok.App[1]);
+  t.deepEqual(courseModule, {
+    title: "my module",
+    course_address: course_addr.Ok,
+    timestamp: 123
+  })
+  await s.consistency();
+
+  const courseResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: course_addr.Ok
+  })
+  const course = JSON.parse(courseResult.Ok.App[1]);
+  t.ok(course.modules.length === 1);
+  t.ok(course.modules[0] === module_addr.Ok);
+})
+
+orchestrator.registerScenario("Scenario8: Update Module", async (s, t) => {
+  const { alice, bob } = await s.players(
+    {alice: conductorConfig, bob: conductorConfig},
+    true
+  );
+
+  const course_addr = await create_course(alice, "my course", 123);
+  t.ok(course_addr.Ok);
+  await s.consistency();
+
+  const module_addr = await create_module(alice, "my module", course_addr.Ok, 123);
+  t.ok(module_addr.Ok);
+  await s.consistency();
+
+  const updated_module = await alice.call("course_dna", "courses", "update_module", {
+    title: "updated module", 
+    module_address: module_addr.Ok
+  })
+
+  const moduleResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: updated_module.Ok
+  })
+  const courseModule = JSON.parse(moduleResult.Ok.App[1]);
+  t.deepEqual(courseModule, {
+    title: "updated module",
+    course_address: course_addr.Ok,
+    timestamp: 123
+  })
+  await s.consistency();
+
+  const courseResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: course_addr.Ok
+  })
+  const course = JSON.parse(courseResult.Ok.App[1]);
+  
+  t.ok(course.modules.length === 1);
+  const moduleByCourse = await alice.call("course_dna", "courses", "get_entry", {
+    address: course.modules[0] //this is the address of the module before getting updated, should bring the updated module
+  })
+  const moduleByCourseResult = JSON.parse(moduleByCourse.Ok.App[1]);
+  t.deepEqual(moduleByCourseResult, {
+    title: "updated module",
+    course_address: course_addr.Ok,
+    timestamp: 123
+  })
+  await s.consistency();
+})
+
+orchestrator.registerScenario("Scenario9: Delete module", async (s, t) => {
+  const { alice, bob } = await s.players(
+    {alice: conductorConfig, bob: conductorConfig},
+    true
+  );
+  
+  const course_addr = await create_course(alice, "my course", 123);
+  t.ok(course_addr.Ok);
+  await s.consistency();
+
+  const module_addr = await create_module(alice, "my module", course_addr.Ok, 123);
+  t.ok(module_addr.Ok);
+  await s.consistency();
+
+  await alice.call("course_dna", "courses", "delete_module", {
+    module_address: module_addr.Ok
+  })
+  await s.consistency();
+
+  const courseResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: course_addr.Ok
+  })
+  const course = JSON.parse(courseResult.Ok.App[1]);
+  t.ok(course.modules.length === 0);
+  await s.consistency();
+
+})
+
+orchestrator.registerScenario("Scenario10: Create Content", async (s, t) => {
+  const { alice, bob } = await s.players(
+    {alice: conductorConfig, bob: conductorConfig},
+    true
+  );
+
+  const course_addr = await create_course(alice, "my course", 123);
+  t.ok(course_addr.Ok);
+  await s.consistency();
+
+  const module_addr = await create_module(alice, "my module", course_addr.Ok, 123);
+  t.ok(module_addr.Ok);
+  await s.consistency();
+
+  const content_addr = await create_content(alice, "my content", module_addr.Ok, "www.content.com", 123, "this is my new content");
+  t.ok(content_addr.Ok);
+  await s.consistency();
+
+  const contentResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: content_addr.Ok
+  })
+  const content = JSON.parse(contentResult.Ok.App[1]);
+  await s.consistency();
+
+  t.deepEqual(content, {
+    name: "my content",
+    url: "www.content.com",
+    description: "this is my new content",
+    timestamp: 123,
+    module_address: module_addr.Ok
+  })
+  await s.consistency();
+
+})
+
+orchestrator.registerScenario("Scenario11: Update Content", async (s, t) => {
+  const { alice, bob } = await s.players(
+    {alice: conductorConfig, bob: conductorConfig},
+    true
+  );
+
+  const course_addr = await create_course(alice, "my course", 123);
+  t.ok(course_addr.Ok);
+  await s.consistency();
+
+  const module_addr = await create_module(alice, "my module", course_addr.Ok, 123);
+  t.ok(module_addr.Ok);
+  await s.consistency();
+
+  const content_addr = await create_content(alice, "my content", module_addr.Ok, "www.content.com", 123, "this is my new content");
+  t.ok(content_addr.Ok);
+  await s.consistency();
+
+
+  const updated_content_addr = await alice.call("course_dna", "courses", "update_content", {
+    content_address: content_addr.Ok, 
+    name: "updated content", 
+    url: "www.updatedcontent.com", 
+    description: "this content has been updated"
+  })
+  await s.consistency();
+
+  const contentResult = await alice.call("course_dna", "courses", "get_entry", {
+    address: updated_content_addr.Ok
+  })
+  const content = JSON.parse(contentResult.Ok.App[1]);
+  await s.consistency();
+
+  t.deepEqual(content, {
+    name: "updated content",
+    url: "www.updatedcontent.com",
+    description: "this content has been updated",
+    timestamp: 123,
+    module_address: module_addr.Ok
+  })
+  await s.consistency();
+
+  const contentResultByPreviousAddr = await alice.call("course_dna", "courses", "get_entry", {
+    address: content_addr.Ok
+  })
+  const contentByPreviousAddr = JSON.parse(contentResultByPreviousAddr.Ok.App[1]);
+  t.deepEqual(contentByPreviousAddr, {
+    name: "updated content",
+    url: "www.updatedcontent.com",
+    description: "this content has been updated",
+    timestamp: 123,
+    module_address: module_addr.Ok
+  })
+  await s.consistency();
+
+
+  //Get Contents
+  const contentsByModule = await alice.call("course_dna", "courses", "get_contents", {
+    module_address: module_addr.Ok
+  })
+  t.ok(contentsByModule.Ok);
+  t.ok(contentsByModule.Ok[0] === content_addr.Ok)
+  await s.consistency();
+
+})
+
+orchestrator.registerScenario("Scenario12: Delete content", async (s, t) => {
+  const { alice, bob } = await s.players(
+    {alice: conductorConfig, bob: conductorConfig},
+    true
+  );
+
+  const course_addr = await create_course(alice, "my course", 123);
+  t.ok(course_addr.Ok);
+  await s.consistency();
+
+  const module_addr = await create_module(alice, "my module", course_addr.Ok, 123);
+  t.ok(module_addr.Ok);
+  await s.consistency();
+
+  const content_addr = await create_content(alice, "my content", module_addr.Ok, "www.content.com", 123, "this is my new content");
+  t.ok(content_addr.Ok);
+  await s.consistency();
+
+  await alice.call("course_dna", "courses", "delete_content", {
+    content_address: content_addr.Ok
+  })
+  await s.consistency();
+
+  const contentsByModule = await alice.call("course_dna", "courses", "get_contents", {
+    module_address: module_addr.Ok
+  })
+  t.ok(contentsByModule.Ok);
+  t.ok(contentsByModule.Ok.length === 0)
 
 })
 

@@ -107,8 +107,6 @@ mod my_zome {
     }
 
     
-
-
     /***** Modules entry definition and functions */
     #[entry_def]
     fn module_entry_definition() -> ValidatingEntryType {
@@ -128,5 +126,32 @@ mod my_zome {
     #[zome_fn("hc_public")]
     fn delete_module(module_address: Address) -> ZomeApiResult<Address> {
         module::delete(module_address)
+    }
+
+
+    /***** Content entry definition and functions */
+    #[entry_def]
+    fn content_entry_def() -> ValidatingEntryType {
+        content::entry_def()
+    }
+
+    #[zome_fn("hc_public")] 
+    fn get_contents(module_address: Address) -> ZomeApiResult<Vec<Address>> {
+        content::get_contents(&module_address)
+    }
+
+    #[zome_fn("hc_public")]
+    fn create_content(name: String, module_address: Address, url: String, timestamp: u64, description: String) -> ZomeApiResult<Address> {
+        content::create(name, module_address, url, timestamp, description)
+    }
+
+    #[zome_fn("hc_public")]
+    fn update_content(content_address: Address, name: String, url: String, description: String) -> ZomeApiResult<Address> {
+        content::update(content_address, name, url, description)
+    }
+
+    #[zome_fn("hc_public")]
+    fn delete_content(content_address: Address) -> ZomeApiResult<Address> {
+        content::delete(content_address)
     }
 }
