@@ -7,17 +7,17 @@ ui_interfaces = []
 id = 'hc-alice'
 keystore_file = './alice.keystore'
 name = 'alice'
-public_address = 'HcScjwa89epCAea9r8tUIRrj35ixri378CehkGxW98Nu5c3xvn87NvUbovxpxei'
+public_address = 'HcSCJ5JWB7yrp9ro8tuNoaJRVR7mscd4x7OjxD7HO34r49CtkTCATXji85p8u3z'
 
 [[agents]]
 id = 'hc-bob'
 keystore_file = './bob.keystore'
 name = 'bob'
-public_address = 'HcScIWQx7b9vA6qcmeGt6cUu3gSnfiph4gvgSGDDwotfnpmom9ordxV9HX8rfoa'
+public_address = 'HcScjdXXB4zugs6xf7nSJGB338wDk9cqcV8oFwmh6Exotu6setNp4EHkA4mzr9i'
 
 [[dnas]]
 file = '/home/holomachine/projects/hUdemy/dna/dist/dna.dna.json'
-hash = 'QmeesvpXAv9wKgDCqw93G5uQh1nxc1T6ujrw7fZftKa7JD'
+hash = 'QmP7wJM5Yx72S6yqsUQE5HFo9hMTMG4V8s4Akdbp6qjP6z'
 id = 'hc-courses'
 
 [[instances]]
@@ -58,6 +58,20 @@ id = 'bob-instance'
 port = 8889
 type = 'websocket'
 
+[logger]
+state_dump = true
+type = 'debug'
+
+[logger.rules]
+rules = []
+
 [network]
-type = "sim2h"
 sim2h_url = 'ws://localhost:9000'
+type = 'sim2h'
+
+[passphrase_service]
+type = 'cmd'
+
+[signals]
+consistency = false
+trace = false

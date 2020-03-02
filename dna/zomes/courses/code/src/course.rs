@@ -187,6 +187,7 @@ fn validate_course_title(title: &str) -> Result<(), String> {
 }
 
 fn validate_teacher_is_member(teacher_address: &Address) -> ZomeApiResult<()> {
+    hdk::debug(format!("qwertyuio {}", hdk::PUBLIC_TOKEN.to_string()))?;
     let is_valid_json: JsonString = hdk::call(
         hdk::THIS_INSTANCE, 
         "members", 

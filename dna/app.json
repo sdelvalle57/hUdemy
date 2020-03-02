@@ -11,6 +11,9 @@
   "version": "0.1.0",
   "dht": {},
   "properties": {
-    "valid_members": ["HcScjwa89epCAea9r8tUIRrj35ixri378CehkGxW98Nu5c3xvn87NvUbovxpxei","HcScIWQx7b9vA6qcmeGt6cUu3gSnfiph4gvgSGDDwotfnpmom9ordxV9HX8rfoa"]
+    "valid_members": [
+      "HcSCJ5JWB7yrp9ro8tuNoaJRVR7mscd4x7OjxD7HO34r49CtkTCATXji85p8u3z",
+      "HcScjdXXB4zugs6xf7nSJGB338wDk9cqcV8oFwmh6Exotu6setNp4EHkA4mzr9i"
+    ]
   }
 }

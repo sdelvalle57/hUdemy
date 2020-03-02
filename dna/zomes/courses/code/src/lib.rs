@@ -155,4 +155,6 @@ mod my_zome {
     fn delete_content(content_address: Address) -> ZomeApiResult<Address> {
         content::delete(content_address)
     }
+
 }
+
